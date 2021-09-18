@@ -7,8 +7,8 @@ void main() {
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) {//画面を生成する場所
+    return MaterialApp(//ここから先で画面を生成することになっている
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -27,7 +27,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatefulWidget {//ここでStatefullWidgetの宣言
+  //StatefulWidgetはSetStateしないと書き換わらない
+  //RiverpodはfookWidget
   MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -56,6 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      //書き換える前にカウンターを①つ追加→buldが走る
+      //カウンターのデータが書き換わった際に、StatelessWigetを書き換えるほうがいいよね。
     });
   }
 
@@ -67,6 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    final counterTitle = 'aaaaaa';
+    //letの代わりにfinal
+    //var
+    //String
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -93,6 +101,9 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+              counterTitle,
+            ),
             Text(
               'You have pushed the button this many times:',
             ),
